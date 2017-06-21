@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Menlo" ;
+  src: url("fonts/Menlo.ttf");
+}
+
+body{
+  background-color: #F5F3EE;
+}
+
+#app_name{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(49, 52, 56);
+  position: relative;
+  left:250px;
+  top: 5px;
+}
+
+#terminal{
+  height: 400px;
+  width: 700px;
+  background-color:rgb(49, 52, 56);
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 200px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+
+#nav{
+  height: 25px;
+  width: 100%;
+  background-color: rgb(213, 213, 213);
+  border-radius: 5px 5px 0px 0px;
+  border-bottom:1px solid rgb(145, 145, 145);
+}
+
+#btn{
+  width:10px;
+  height:10px;
+  border-radius:10px;
+  position:relative;
+  left:7px;
+  top: 5px;
+  margin-right: 2px;
+  display:inline-block;
+}
+.red{
+  background-color:#FF625D;
+}
+.yellow{
+  background-color:#FFBE4A;
+}
+.green{
+  background-color:#00CD55;
+}
+
+
+#text-box{
+  line-height: 1.5;
+  height: calc(100% - 41px);
+  margin: 8px;
+  color: rgb(224, 224, 224);
+  font-family: "Menlo", Courier;
+  font-size: 13px;
+  overflow-y: scroll;
+}
+
+#terminal-input{
+  background-color: rgb(49, 52, 56);
+  color: rgb(224, 224, 224);
+  width: calc(100% - 200px);
+  border: none;
+  font-family: "Menlo", Courier;
+  font-size: 13px;
+}
+
+#resume{
+  color: rgb(89, 247, 133);
+  font-style: none;
+}
+
+input:focus{
+    outline: none;
+    color: rgb(244, 244, 244);
+}
+
+::-webkit-scrollbar {
+      width: 8px;
+}
+
+.directory{
+  color: rgb(0, 224, 224);
+}

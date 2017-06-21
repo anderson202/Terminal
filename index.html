@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Website</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/terminal.js"></script>
+  </head>
+  <body>
+    <div id="terminal">
+      <div id = "nav">
+        <div id = "btn" class="red"></div>
+        <div id = "btn" class="yellow"></div>
+        <div id = "btn" class="green"></div>
+        
+        <span id="app_name">Anderson-Ng</span>
+      </div>
+      <div id = "text-box" onclick="focusOnTerminal()">
+        <div id="history"></div>
+        <span id="terminal-header">Anderson-Site:~ Visitor$ </span>
+        <input id="terminal-input" onkeydown="checkInput(event)"/>
+      </div>
+    </div>
+  </body>
+</html>
