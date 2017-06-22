@@ -2,31 +2,40 @@
   <head>
     <title>Website</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <script src="js/interaction.js"></script>
     <script src="js/terminal.js"></script>
-    <script src="js/sidebar.js"></script>
   </head>
   <body>
     <div id="sidenav">
-      <a href="#">Show All</a>
-      <a href="#">Github</a>
+      <a href="javascript:void();" onclick="openTerminal()">Terminal</a>
+      <a href="https://www.github.com/anderson202">Github</a>
       <a href="#">Contact</a>
     </div>
     <span onclick="toggleNav()" id="openbtn" class="btn">&#9776;</span>
     <div id="main">
       <div id="terminal">
         <div id = "nav">
-          <div id = "btn" class="red"></div>
-          <div id = "btn" class="yellow"></div>
-          <div id = "btn" class="green"></div>
+          <div id = "redbtn" class="red browserbtn" onclick="closeTerminal()"></div>
+          <div id = "yellowbtn" class="yellow browserbtn"></div>
+          <div id = "greenbtn" class="green browserbtn"></div>
 
           <span id="app_name">Anderson-Ng</span>
         </div>
         <div id = "text-box" onclick="focusOnTerminal()">
-          <div id="history"></div>
+          <div id="history">
+            <span>Type 'help' to see list of commands</span><br/>
+          </div>
           <span id="terminal-header">Anderson-Site:~ Visitor$ </span>
           <input id="terminal-input" onkeydown="checkInput(event)"/>
         </div>
-      </div>    
+      </div>
+    </div>
+    <div id="info">
+      <span id="name">Anderson</span>
+      <span id="morename">Ng Ho Yin</span>
+      <p>CS Student @ UofT, currently Software Development Intern @ Moneris</p>
+      <p class="pink"><a href="#">Github</a> &middot; <a href="">Linkedin</a> &middot; <a href="">Email</a></p>
     </div>
   </body>
 </html>
