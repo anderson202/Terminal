@@ -39,3 +39,11 @@ function updateScroll(){
     var element = document.getElementById("text-box");
     element.scrollTop = element.scrollHeight;
 };
+
+function showName(){
+    document.getElementById("name").innerHTML = "Anderson Ho Yin";
+}
+
+function hideName(){
+    document.getElementById("name").innerHTML = "Anderson";
+}

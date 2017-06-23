@@ -49,14 +49,26 @@ body{
 
 }
 
+.signature{
+  color: rgb(255, 48, 48);
+}
+
 #info #name{
   font-weight: bold;
   font-size: 36px;
-  color: rgb(252, 58, 129);
+}
+
+#info #name:hover{
+  font-weight: bold;
+  font-size: 36px;
 }
 
 #info #morename{
-  font-size: 36px;
+    font-size: 36px;
+}
+
+#info .infoname{
+  color: rgb(30, 30, 30);
 }
 
 #nav{
@@ -91,9 +103,19 @@ body{
   color: rgb(255, 86, 162);
 }
 
-.pink a{
+.signature a{
   text-decoration: none;
-  color: rgb(255, 86, 162);
+  color: rgb(40,60,99);
+  border-bottom: 1px solid rgba(40, 60, 99, 0);
+  -webkit-transition: border .5s ease;
+  -moz-transition: border .5s ease;
+  -ms-transition: border .5s ease;
+  -o-transition: border .5s ease;
+  transition: border .5s ease; 
+}
+
+.signature a:hover{
+    border-bottom: 1px solid rgba(40, 60, 99, 1);
 }
 
 .info{
