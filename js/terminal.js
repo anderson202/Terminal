@@ -1,8 +1,11 @@
 var filesystem = {
   "/" : {path: "/",
         files : ["about_me.txt", "resume.pdf"],
-        directories : {"test" : {path: "/test", files:[], directories:[]},
-                       "test2" : {path: "/test2", files:["test2file"], directories:[]}}
+        directories : {"contact_me" : {path: "/contact_me", files:["github", "linkedin", "email"], directories:[], parentPath:"/"},
+                       "secret" : {path: "/secret", files:["stop"], directories:
+                         {"top_secret": {path: "/secret/top_secret", files:["do_not_read"], directories:[], parentPath: "/secret"},
+                         "empty": {path: "/secret/empty", files:["not_empty.txt"], directories: [], parentPath: "/secret"}}, parentPath: "/"}},
+        parentPath: "/"
       },
   currentDir : []
 };
@@ -67,8 +70,8 @@ function evaluateInput(){
       break;
     case "help":
       returnValue += "Available commands<br/>"
-                  + "<span class='pink'>cat</span> [files] - print file content to console<br/> "
-                  + "<span class='pink'>cd</span> [directory] - change directory<br/> "
+                  + "<span class='pink'>cat</span> [files]... - print file content to console<br/> "
+                  + "<span class='pink'>cd</span> [.|..|directory] - change directory<br/> "
                   + "<span class='pink'>clear</span> - clears console<br/> "
                   + "<span class='pink'>ls</span> - list out content of current directory<br/>"
                   + "<span class='pink'>pwd</span> - print working directory path<br/>"
@@ -93,15 +96,18 @@ function evaluateInput(){
 };
 
 function cd(inputList, input){
-  if (inputList.length < 2) filesystem["currentDir"] = [];
-  else{
+  if (inputList.length < 2){
+    filesystem["currentDir"] = []
+  }else if (inputList[1] == "."){
+    return "";
+  }else if (inputList[1] == ".."){
+    var currentDir = getCurrentDirectory();
+    console.log(currentDir);
+    filesystem["currentDir"] = removeEmpty(currentDir["parentPath"].split("/"));
+  }else{
     var directoryList = inputList[1].split("/");
     var absolute = directoryList[0] != "" ? false : true;
-    var cleanedList = [];
-    for (i = 0; i < directoryList.length; i++){
-      if (directoryList[i].trim() != "") cleanedList.push(directoryList[i].trim());
-    }
-
+    var cleanedList = removeEmpty(directoryList);
     var destination;
     var newPath;
     if(absolute){
@@ -127,7 +133,10 @@ function ls(){
   var currentDirectory = getCurrentDirectory();
   for (i = 0; i < currentDirectory["files"].length; i++){
     file = currentDirectory["files"][i];
-    if(file == "resume.pdf") files.push("<a href=\"docs/resume.pdf\" id=\"resume\">resume.pdf</a>");
+    if(file == "resume.pdf") files.push("<a target=\"_blank\" href=\"docs/resume.pdf\" class=\"terminalurl\">" + file + "</a>");
+    else if (file == "github") files.push("<a target=\"_blank\" href=\"https://www.github.com/anderson202\" class=\"terminalurl\">" + file + "</a>");
+    else if (file == "linkedin") files.push("<a target=\"_blank\" href=\"https://www.linkedin.com/in/anderson-ng-807337a0/\" class=\"terminalurl\">" + file + "</a>");
+    else if (file == "email") files.push("<a href=\"mailto:anderson.ng@mail.utoronto.ca\" class=\"terminalurl\">" + file + "</a>");
     else files.push(currentDirectory["files"][i]);
   }
 
@@ -151,22 +160,28 @@ function cat(files, input){
   var currentDirectory = getCurrentDirectory();
   if (files.length > 1){
     for (i = 1; i < files.length; i++){
-      if (files[i] == "about_me.txt"){
+      if (files[i] == "about_me.txt" && currentDirectory["path"] == "/"){
 
         value += "<span style=\"color:rgb(200,50,53);\">######################################################################################</span><br/>" +
-        "Hi! I'm Anderson. Welcome to my website. <br/><br/> "  +
-        "I got bored one day and came up with the idea of having my personal "
-        +"site be a \"virtual shell\". </br></br> I'm currently a student at the "
-        + "University of Toronto studying Computer Science. I love writing code "
-        + "and building things. <br/>"
+        "Hi! I'm Anderson. Welcome to my website. <br/><br/> "
+        + "I'm currently a student at the University of Toronto studying Computer Science. I love writing code "
+        + "and building things. <br/><br/>"
+        + "I am comfortable working with <span class=\"language\">Python</span>, <span class=\"language\">Java</span>, <span class=\"language\">HTML/CSS</span> and <span class=\"language\">Javascript</span>.<br/><br/>"
+        + "I am always looking for cool opportunities, so let\'s chat! <br/><br/>"
+        + "ps: I got bored one day and decided to make my personal "
+        +"site a \"virtual shell\". It has very limited features so don't expect too much! </br>"
+        + "<span style=\"color:rgb(200,50,53);\">######################################################################################</span>";
 
-        + "<span style=\"color:rgb(200,50,53);\">######################################################################################</span>"
-
-
-      }else if (files[i] == ""){
-        value += "Download my resume <a href=\"\">here</a>";
-      }else if (currentDirectory["directories"][files[i]] !== "undefined"){
+      }else if (files[i] == "stop"  && currentDirectory["path"] == "/secret"){
+        value += "stop now. there is no going back!";
+      }else if (files[i] == "do_not_read" && currentDirectory["path"] == "/secret/top_secret"){
+        value += "blue switch is the best switch."
+      }else if (files[i] in currentDirectory["directories"]){
         value += input +": " + files[i] + " is a directory";
+      }else if (currentDirectory["files"].indexOf(files[i]) != -1){
+        value += "";
+      }else{
+        value += input +": No such file or directory" ;
       }
       if(i != files.length - 1){
         value += "<br/>";
@@ -189,4 +204,12 @@ function getCurrentDirectory(){
     currentDir = currentDir["directories"][filesystem["currentDir"][i]];
   }
   return currentDir;
+}
+
+function removeEmpty(lst){
+  var cleanedList = [];
+  for (i = 0; i < lst.length; i++){
+    if (lst[i].trim() != "") cleanedList.push(lst[i].trim());
+  }
+  return cleanedList;
 }

@@ -1,21 +1,24 @@
 <html>
   <head>
-    <title>Website</title>
+    <title>Anderson Ng</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
     <script src="js/interaction.js"></script>
     <script src="js/terminal.js"></script>
   </head>
   <body>
     <div id="sidenav">
-      <a href="javascript:void();" onclick="openTerminal()">Terminal</a>
-      <a href="#">About</a>
+      <p onclick="openTerminal()">Terminal</p>
+      <p onclick="showAbout()">About</p>
+      <a target="_blank"  href="docs/resume.pdf">Resume</a>
+      <p onclick="showRandom()">Random stuff</p>
     </div>
     <span onclick="toggleNav()" id="openbtn" class="btn">&#9776;</span>
-    <div id="main">
+    <div id="main" class="main">
       <div id="terminal">
         <div id = "nav">
-          <div id = "redbtn" class="red browserbtn" onclick="closeTerminal()"></div>
+          <div id = "redbtn" class="red browserbtn" onclick="showAbout();"></div>
           <div id = "yellowbtn" class="yellow browserbtn"></div>
           <div id = "greenbtn" class="green browserbtn"></div>
 
@@ -30,11 +33,26 @@
         </div>
       </div>
     </div>
-    <div id="info">
-      <span id="name" class="signature" onmouseover="showName()" onmouseout="hideName()">Anderson</span>
-      <span id="morename" class="infoname">Ng</span>
-      <p class="infoname">CS Student @ UofT, currently Software Development Intern @ Moneris</p>
-      <p class="signature"><a target="_blank" href="https://www.github.com/anderson202">Github</a> &middot; <a target="_blank" href="https://www.linkedin.com/in/anderson-ng-807337a0/">Linkedin</a> &middot; <a href="mailto:anderson.ng@mail.utoronto.ca">Contact</a></p>
+    <div class="main" id="info">
+      <div id="about">
+        <span id="name" class="signature" onmouseover="showName()" onmouseout="hideName()">Anderson</span>
+        <span id="morename" class="infoname">Ng</span>
+        <div id="default">
+          <p class="infoname">CS Student @ UofT, currently Software Development Intern @ Moneris</p>
+          <p>I love writing code and solving problems...Rubik's cubes too!</p>
+        </div>
+
+      </div>
+      <p class="signature">
+        <a target="_blank" href="https://www.github.com/anderson202">Github</a>
+        &middot;
+        <a target="_blank" href="https://www.linkedin.com/in/anderson-ng-807337a0/">Linkedin</a>
+        &middot;
+        <a href="mailto:anderson.ng@mail.utoronto.ca">Contact</a>
+      </p>
+    </div>
+    <div id="random">
+      <div id="mech">Nothing Here Yet...</div>
     </div>
   </body>
 </html>

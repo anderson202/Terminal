@@ -5,6 +5,7 @@
 
 body{
   background: linear-gradient(rgb(245, 243, 238), rgb(247, 235, 205));
+  min-height: 200px;
 }
 
 #app_name{
@@ -34,19 +35,39 @@ body{
 }
 
 #info{
-  text-align: center;
   position: relative;
-  top: 40%;
+  margin-left: 100px;
   display: none;
   font-size: 20px;
-
   font-family: 'Lora', serif;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
+}
 
+#about{
+  font-size: 17px;
+}
+
+#random{
+  transition: margin-left .5s;
+  display: none;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Lora', serif;
+  font-size: 36px;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+#mech{
+  padding: 100px;
+  width: 400px;
 }
 
 .signature{
@@ -111,7 +132,7 @@ body{
   -moz-transition: border .5s ease;
   -ms-transition: border .5s ease;
   -o-transition: border .5s ease;
-  transition: border .5s ease; 
+  transition: border .5s ease;
 }
 
 .signature a:hover{
@@ -142,7 +163,11 @@ body{
   font-size: 13px;
 }
 
-#resume{
+.language{
+  color: rgb(239, 224, 62);
+}
+
+.terminalurl{
   color: rgb(89, 247, 133);
   font-style: none;
 }
@@ -164,6 +189,7 @@ input:focus{
 /* The side navigation menu */
 #sidenav {
     height: 100%; /* 100% Full-height */
+
     width: 250px;
     margin-left: -250px;
     position: fixed; /* Stay in place */
@@ -178,21 +204,23 @@ input:focus{
 }
 
 /* The navigation menu links */
-#sidenav a {
+#sidenav p, #sidenav a {
     text-decoration: none;
-    font-family: Arial, Courier;
+    font-family: 'Raleway', sans-serif;
     color: rgb(213, 213, 213);
-    margin: 10px;
-    font-size: 15px;
+    margin: 20px;
+    font-size: 18px;
     display: block;
-    transition: 1s;
+    transition: 0.3s;
     padding-left: 20px;
+    font-weight: 200;
+    text-align: right;
 
 }
 
 /* When you mouse over the navigation links, change their color */
-#sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+#sidenav p:hover, .offcanvas p:focus, #sidenav a:hover{
+    color: rgb(255, 48, 48);
 }
 
 .btn{
@@ -205,7 +233,7 @@ input:focus{
     transition: 1s;
 }
 
-#main {
+.main {
     transition: margin-left .5s;
     position: relative;
     top: 50%;
@@ -241,4 +269,17 @@ input:focus{
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+@media only screen and (max-width: 714px) {
+  #openbtn{
+      display: none;
+  }
+  #terminal{
+    display: none;
+  }
+  #info{
+    display:block;
+    margin: 20px;
+  }
 }
